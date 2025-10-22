@@ -1,0 +1,175 @@
+@prefix : <http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы/> .
+
+<http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#composedOf
+:composedOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :composedOf ;
+                          owl:someValuesFrom :Molecule
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :composedOf ;
+                         owl:someValuesFrom :Element
+                       ] .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#hasAtom
+:hasAtom rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasAtom ;
+                       owl:someValuesFrom :Molecule
+                     ] ;
+         rdfs:range [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasAtom ;
+                      owl:someValuesFrom :Atom
+                    ] .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#isPartOfMolucule
+:isPartOfMolucule rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Restriction ;
+                                owl:onProperty :isPartOfMolucule ;
+                                owl:someValuesFrom :Atom
+                              ] ;
+                  rdfs:range [ rdf:type owl:Restriction ;
+                               owl:onProperty :isPartOfMolucule ;
+                               owl:someValuesFrom :Molecule
+                             ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#atomicMass
+:atomicMass rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#atomicNumber
+:atomicNumber rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#elementName
+:elementName rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#elementSymbol
+:elementSymbol rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#molecularFormula
+:molecularFormula rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#molecularWeight
+:molecularWeight rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Atom
+:Atom rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Element
+:Element rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Metal
+:Metal rdf:type owl:Class ;
+       rdfs:subClassOf :Element .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Molecule
+:Molecule rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#NobleGas
+:NobleGas rdf:type owl:Class ;
+          rdfs:subClassOf :Element .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#NonMetal
+:NonMetal rdf:type owl:Class ;
+          rdfs:subClassOf :Element .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Carbon
+:Carbon rdf:type owl:NamedIndividual ,
+                 :NonMetal ;
+        :atomicMass "12.01"^^xsd:float ;
+        :atomicNumber 6 ;
+        :elementSymbol "C" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Hydrogen
+:Hydrogen rdf:type owl:NamedIndividual ,
+                   :NonMetal ;
+          :atomicMass "1.008"^^xsd:float ;
+          :atomicNumber 1 ;
+          :elementSymbol "H" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Methane
+:Methane rdf:type owl:NamedIndividual ,
+                  :Molecule ;
+         :molecularFormula "CH4" ;
+         :molecularWeight "16.04"^^xsd:float .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Nitrogen
+:Nitrogen rdf:type owl:NamedIndividual ,
+                   :NonMetal ;
+          :atomicMass "14.01"^^xsd:float ;
+          :atomicNumber 7 ;
+          :elementSymbol "N" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Oxygen
+:Oxygen rdf:type owl:NamedIndividual ,
+                 :NonMetal ;
+        :atomicMass "16.0"^^xsd:float ;
+        :atomicNumber 8 ;
+        :elementSymbol "O" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2025/9/Химические_Элементы_и_Молекулы#Water
+:Water rdf:type owl:NamedIndividual ,
+                :Molecule ;
+       :molecularFormula "H20" ;
+       :molecularWeight "18.02"^^xsd:float .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
